@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>render-md</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- GitHub Markdown CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-dark.min.css" />
+
+  <!-- Highlight.js for Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+  <script src="wasm_exec.js"></script>
+  <script>
+    const go = new Go();
+    WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject)
+      .then(result => go.run(result.instance))
+      .catch(err => console.error("Error loading Wasm module:", err));
+
+    function updatePreview() {
+      const markdownText = document.getElementById("markdown-input").value;
+      const html = convertMarkdown(markdownText);
+      document.getElementById("preview").innerHTML = html;
+
+      // Syntax Highlighting
+      document.querySelectorAll("pre code").forEach((block) => {
+        hljs.highlightElement(block);
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1 style="color: #bb86fc;">Render-MD</h1><p style="justify-self: center ; font-style: italic;">A Client-Side Markdown Editor</p>
+  <div class="container">
+    <div class="editor">
+      <textarea id="markdown-input" placeholder="Type your Markdown" oninput="updatePreview()"></textarea>
+    </div>
+  <div id="preview" class="preview markdown-body"></div>
+  </div>
+</body> 
+</html> 
