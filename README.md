@@ -1,8 +1,9 @@
 # Render-MD: A Client-Side Markdown Editor
 **Render-MD** is a lightweight client-side Markdown editor built with Go + WebAssembly. It provides real-time Markdown preview with syntax highlighting, making it a powerful tool for writing and formatting Markdown directly in the browser.
 
-This is a learning project to explore Go WebAssembly and how it can be used for frontend applications.
+> This is a learning project to explore Go WebAssembly and how it can be used for frontend applications.
 
+![](img/go+wasm_in_browser.png)
 ## Installation & Running Locally
 1️⃣ Clone the Repository
 ```sh
