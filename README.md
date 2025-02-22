@@ -7,7 +7,7 @@
 ## Installation & Running Locally
 1️⃣ Clone the Repository
 ```sh
-git clone https://github.com/your-username/render-md.git
+git clone https://github.com/milinddethe15/render-md.git
 cd render-md
 ```
 2️⃣ Build WebAssembly (WASM)
